@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff8df"><meta name="description" content="A gentle learning universe for young children."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="EmileeVerse"><title>EmileeVerse</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icons/emileeverse-192.png"><link rel="apple-touch-icon" href="assets/icons/emileeverse-192.png"><link rel="stylesheet" href="styles.css?v=8"></head>
+<body><main class="game">
+<header class="topbar"><button class="brand brand-button" id="logoButton" aria-label="EmileeVerse home"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h22a7 7 0 0 1 7 7v14a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7V17a7 7 0 0 1 7-7Z"/><path d="M13 18h5m6 0h5m6 0h1M13 25h5m6 0h5m6 0h1M14 32h20"/></svg><span>EmileeVerse</span></button><div class="top-actions"><span class="turn-pill" id="turnPill" hidden></span><button class="icon-button" id="parentButton" aria-label="Open parent progress"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg></button><button class="icon-button" id="setupButton" aria-label="Player setup"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></button></div></header>
+
+<button class="mascot-guide" id="mascotGuide" type="button" aria-label="Hear Emilee, your learning guide">
+ <span class="guide-bubble" id="guideBubble">Hello! Let’s learn together!</span>
+ <svg class="guide-character" viewBox="0 0 120 120" aria-hidden="true"><path class="guide-ear" d="M28 39 19 16l26 13M92 39l9-23-26 13"/><circle class="guide-body" cx="60" cy="61" r="43"/><circle class="guide-eye" cx="45" cy="56" r="6"/><circle class="guide-eye" cx="75" cy="56" r="6"/><path class="guide-smile" d="M46 76q14 14 28 0"/><path class="guide-star" d="m60 11 4 9 10 1-8 7 2 10-8-5-8 5 2-10-8-7 10-1Z"/></svg>
+</button>
+
+<section class="page setup-page" id="setupPage">
+ <div class="step-mark"></div><h1>Who is playing?</h1><p class="page-lead">A grown-up can set this up.</p>
+ <form class="setup-panel" id="setupForm">
+  <fieldset><legend>Choose players</legend><div class="big-choices">
+   <label class="player-card"><input type="radio" name="players" value="1" checked><span><b>1</b><strong>One player</strong><small>Play by yourself</small></span></label>
+   <label class="player-card"><input type="radio" name="players" value="2"><span><b>2</b><strong>Two players</strong><small>Take turns together</small></span></label>
+  </div></fieldset>
+  <div class="name-fields"><label>Player 1 name<input id="playerOne" maxlength="14" value="Player 1" autocomplete="off"></label><label id="playerTwoField" hidden>Player 2 name<input id="playerTwo" maxlength="14" value="Player 2" autocomplete="off"></label></div>
+  <label class="toggle"><span><b>Sound effects</b><small>Questions are always read aloud</small></span><input id="soundToggle" type="checkbox" checked></label>
+  <button class="primary-button continue-button" type="submit">Choose a game <span aria-hidden="true">→</span></button>
+ </form>
+</section>
+
+<section class="page library-page" id="libraryPage" hidden>
+ <div class="library-hero"><div><div class="step-mark">WELCOME TO EMILEEVERSE</div><h1>Ready for an adventure?</h1><p class="page-lead">A short mix of games chosen just for today.</p></div><button class="journey-button" id="journeyButton"><span class="journey-play" aria-hidden="true">▶</span><span><b>Play for me</b><small>About 5 minutes</small></span></button></div>
+ <section class="adventure-hub" aria-labelledby="adventureTitle"><div class="adventure-heading"><span class="eyebrow">GUIDED LEARNING</span><h2 id="adventureTitle">Choose a learning adventure</h2><p>One idea, practiced in several easy ways.</p></div><div class="adventure-cards">
+  <button class="adventure-card letter-adventure" data-adventure="letter"><span class="adventure-symbol" id="letterAdventureSymbol">A</span><span><b id="letterAdventureLabel">Learn A</b><small>Hear it, find it, press it, learn a word</small></span></button>
+  <button class="adventure-card number-adventure" data-adventure="number"><span class="adventure-symbol" id="numberAdventureSymbol">1</span><span><b id="numberAdventureLabel">Meet Number 1</b><small>Press, count and show it on your fingers</small></span></button>
+   <button class="adventure-card animal-adventure" data-adventure="animal"><span class="adventure-symbol adventure-photo" id="animalAdventureSymbol"></span><span><b id="animalAdventureLabel">Animal Day</b><small>Name, genuine sound, home and special feature</small></span></button>
+ </div><div class="milestone-strip" id="milestoneStrip" hidden></div></section>
+ <div class="reward-shelf" id="rewardShelf" hidden><div><span class="eyebrow">YOUR COLLECTION</span><h2>Rewards you earned</h2></div><div class="reward-shelf-items" id="rewardShelfItems"></div></div>
+ <div class="recommend-row"><div><span class="eyebrow">GOOD TO PLAY NEXT</span><h2>Recommended for you</h2></div><div class="recommend-cards" id="recommendCards"></div></div>
+ <div class="all-games-heading"><h2>Explore all learning worlds</h2><span>43 games</span></div>
+ <div class="library-grid" id="libraryGrid"></div>
+ <button class="text-button" id="changePlayers">← Change players</button>
+</section>
+
+<section class="page parent-page" id="parentPage" hidden>
+ <div class="step-mark">GROWN-UPS ONLY</div><h1>Learning progress</h1><p class="page-lead">Private progress saved only on this device.</p>
+ <div class="stats-grid" id="statsGrid"></div>
+ <div class="progress-panel parent-controls"><h2>Session and voice settings</h2>
+  <label>Correct answers per activity<select id="sessionLength"><option value="3">3 — quick</option><option value="5" selected>5 — regular</option><option value="8">8 — longer</option></select></label>
+  <label>Learning level<select id="difficulty"><option value="explore">Explore — 2 choices and quick hints</option><option value="practice" selected>Practice — grows with the child</option><option value="master">Master — 3 choices and fewer hints</option></select></label>
+  <label>Narration speed<select id="narrationSpeed"><option value="0.82">Slow and clear</option><option value="1" selected>Gentle</option><option value="1.12">A little faster</option></select></label>
+  <label>Pause between sentences<select id="narrationPause"><option value="1000">Long pause</option><option value="700" selected>Regular pause</option><option value="400">Short pause</option></select></label>
+  <label class="parent-toggle"><span>Repeat answer choices once</span><input id="repeatOptions" type="checkbox"></label>
+  <label class="parent-toggle"><span>Read learning facts after answers</span><input id="readFacts" type="checkbox" checked></label>
+ </div>
+ <div class="progress-panel offline-panel"><div><h2>Play without internet</h2><p id="offlineStatus" role="status" aria-live="polite">Checking offline readiness…</p></div><div class="offline-actions"><button class="primary-button" id="installAppButton" type="button" hidden>Install EmileeVerse</button><button class="secondary-button" id="prepareOfflineButton" type="button">Prepare full offline library</button></div><progress id="offlineProgress" max="100" value="0" hidden></progress><small>Full offline preparation downloads the photographs, narration, and genuine sounds stored with the game.</small></div>
+ <div class="progress-panel"><h2>Today and the last 7 days</h2><div id="dailyProgress"></div></div>
+ <div class="progress-panel"><h2>Personal learning map</h2><div id="learningMap"></div></div>
+ <div class="progress-panel"><h2>What to practice next</h2><div id="learningSummary"></div></div>
+ <div class="progress-panel"><h2>Games practiced by player</h2><div id="gameProgressList"></div></div><button class="text-button danger-button" id="resetProgress">Reset all progress</button>
+ <button class="primary-button parent-back" id="parentBack">Back to games</button>
+</section>
+
+<section class="play-area" id="playPage" hidden>
+ <button class="back-button" id="backButton"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Games</button>
+ <p class="player-call" id="playerCall"></p><div class="prompt-row"><p class="prompt" id="prompt"></p><button class="repeat-button" id="repeatButton" aria-label="Repeat the instruction" title="Repeat instruction"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/><path d="M17 9c1 1 1 5 0 6m3-9c3 3 3 9 0 12"/></svg></button></div>
+ <div class="character-wrap" id="keyStage"><div class="character blue" id="character"><span class="spark spark-one" aria-hidden="true">★</span><span class="spark spark-two" aria-hidden="true">★</span><span class="big-key" id="bigKey">A</span><div class="face" aria-hidden="true"><i></i><i></i><b></b></div></div></div>
+ <div class="choice-board" id="choiceBoard" hidden></div>
+ <p class="sequence-hint" id="sequenceHint" hidden></p>
+ <p class="praise" id="praise" aria-live="polite"></p><div class="progress" id="progress" aria-label="Round progress"></div><p class="helper"><span class="keyboard-mini" aria-hidden="true"></span> Use the real keyboard</p><div class="celebration" id="celebration" aria-hidden="true"></div>
+ <div class="learning-overlay" id="demoOverlay" hidden>
+  <div class="learning-card" role="dialog" aria-modal="true" aria-labelledby="demoTitle"><span class="overlay-label">EMILEE SHOWS YOU</span><h2 id="demoTitle"></h2><div class="demo-visual" id="demoVisual"></div><p id="demoText"></p><button class="primary-button overlay-button" id="demoStart" type="button">Let’s play!</button><small>Press SPACE or ENTER</small></div>
+ </div>
+ <div class="learning-overlay reward-overlay" id="rewardOverlay" hidden>
+  <div class="learning-card reward-card" role="dialog" aria-modal="true" aria-labelledby="rewardTitle"><span class="overlay-label">NEW REWARD!</span><div class="earned-reward" id="earnedReward"></div><h2 id="rewardTitle">You earned a reward!</h2><p id="rewardMessage"></p><button class="primary-button overlay-button" id="rewardContinue" type="button">Keep playing!</button><small>Press SPACE or ENTER</small></div>
+ </div>
+</section>
+</main><script src="app.js?v=8"></script></body></html>
